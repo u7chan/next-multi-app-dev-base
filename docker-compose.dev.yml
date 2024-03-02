@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  playground:
+    container_name: playground
+    tty: true
+    build:
+      context: .
+      dockerfile: ./docker/playground/Dockerfile
+    volumes:
+      - playground_volumes:/workspace
+    ports:
+      - 3000:3000
+
+volumes:
+  playground_volumes:

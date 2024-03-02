@@ -1,0 +1,24 @@
+{
+  "name": "dev-container",
+  "service": "playground",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "bun i",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "cweijan.vscode-mysql-client2",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-rename-tag",
+        "humao.rest-client",
+        "mikestead.dotenv",
+        "oderwat.indent-rainbow",
+        "prisma.prisma",
+        "streetsidesoftware.code-spell-checker",
+        "usernamehw.errorlens"
+      ]
+    }
+  }
+}
