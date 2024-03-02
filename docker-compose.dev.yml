@@ -7,10 +7,25 @@ services:
     build:
       context: .
       dockerfile: ./docker/playground/Dockerfile
-    volumes:
-      - playground_volumes:/workspace
     ports:
       - 3000:3000
+    volumes:
+      - playground_volumes:/workspace
+    depends_on:
+      - db
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    ports:
+      - 5432:5432
+    volumes:
+      - db_volumes:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
 
 volumes:
   playground_volumes:
+  db_volumes:
