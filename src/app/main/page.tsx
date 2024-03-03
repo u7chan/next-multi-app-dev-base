@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('http://localhost:3000/main/api/current_date', { cache: 'no-store' })
+  const { currentDate } = await res.json()
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -30,6 +32,12 @@ export default function Home() {
 
       <div className={styles.center}>
         <Image className={styles.logo} src='/main/next.svg' alt='Next.js Logo' width={180} height={37} priority />
+      </div>
+
+      <div className={styles.center}>
+        <div className={styles.description}>
+          <p>{new Date(currentDate).toLocaleString()}</p>
+        </div>
       </div>
 
       <div className={styles.grid}>
